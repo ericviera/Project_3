@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Visualizations</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="css/navbar.css" />
+    <link rel="stylesheet" type="text/css" href="css/style.css" />
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Reem+Kufi" rel="stylesheet">
+  </head>
+
+  <body>
+    <!----------------------------------------------------Webpage Banner------------------------------------------------------------>
+    <div class="container-fluid" id="banner">
+      <br/><br/><br/><br/>    
+      <h1 align="center" class="tagline center-block">Stock Market Predictions</h1>
+    </div>
+    <!----------------------------------------------------Webpage Banner------------------------------------------------------------>
+
+
+    <!----------------------------------------------------Begin Navbar------------------------------------------------------------>
+    <nav class="navbar navbar-default navbar-static-top" role="navigation" id="topnavbar">
+    <!----------------------------------------------------Hambuger Icon------------------------------------------------------------>
+            <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">     
+                      <span class="sr-only">Toggle navigation </span>         
+                      <span class="icon-bar"></span>
+                      <span class="icon-bar"></span>
+                      <span class="icon-bar"></span>         
+                  </button>      
+            </div>
+    <!----------------------------------------------------Hambuger Icon------------------------------------------------------------>
+
+
+    <!----------------------------------------------------Menu Itens------------------------------------------------------------>
+            <div class="collapse navbar-collapse">     
+              <ul align="center" class="nav navbar-nav" >        
+                  <li> <a href="index.html"><span class="center-underline">Home</span></a></li>
+                  <li> <a href="data.html"><span class="center-underline">Models/Data Used</span></a></li>
+                  <li> <a href="visualizations.html"><span class="center-underline">Visualizations</span></a></li>
+                  <li> <a href="about.html"><span class="center-underline">About Us</span></a></li>
+              </ul>
+            </div>
+    <!----------------------------------------------------Menu Itens------------------------------------------------------------>
+    </nav>
+    <!----------------------------------------------------End Navbar------------------------------------------------------------>
+
+
+    <br/><br/><br/><br/>  
+    <div class="row">
+      <div class="col-md-6 col-md-offset-3" align="center">   
+        <h1><strong>Select a Ticker</strong></h1>
+      </div>
+    </div> 
+
+<!--------------------------------------------------- Joonil Code----------------------------------------------------------------------------->
+    
+    <div class="container-fluid bg-1 text-center" style="padding-top: 300px;height: 100vh;">
+            <div class="form-row justify-content-center">
+                <!-- Search form -->
+                <form class="form-group has-search w-50" action="/chart" method="post">
+                    <span class="fa fa-search form-control-feedback"></span>
+                    <input type="text" name="stock" class="form-control" id="auto" placeholder="Search" autocomplete="off">
+                </form>
+            </div>
+    </div>
+
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div id="chartDiv"></div>
+                </div>
+            </div>
+        </div>
+
+        <script type="text/javascript">
+            var stock_prices = JSON.parse('{{ value | tojson | safe }}');
+            var companies = JSON.parse('{{ companies | tojson | safe }}');
+            var code = '{{ code | safe }}';
+            var pred_prices = JSON.parse('{{ pred_prices | tojson | safe }}');
+        </script>
+  
+<!--------------------------------------------------- Joonil Code----------------------------------------------------------------------------->
+
+
+<!--------------------------------------------------- Footer ----------------------------------------------------------------------------->
+  <footer>
+    <div align="center" class="footerlinks">
+      <p align="center" class="text-muted copyright">Rutgers Bootcamp Final Project 2020</p>
+    </div>
+  </footer>
+<!--------------------------------------------------- Footer ----------------------------------------------------------------------------->
+
+
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script> 
+  <script src="js/bootstrap.min.js"></script> 
+
+
+  <script src="https://d3js.org/d3.v6.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+  <script type="text/javascript" src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+  <script src="static/js/app.js"></script>
+  <script src="static/js/company_list.js"></script>
+   
+  <script>
+  $('#topnavbar').affix({
+     offset: {
+         top: $('#banner').height()
+     }}); </script>
+
+  </body>
+
+</html>
